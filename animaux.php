@@ -1,6 +1,6 @@
 
 <?php
-    require_once 'controlleurs/veterinaires.php';
+    require_once 'controlleurs/animaux.php';
 ?>
 
 <!doctype html>
@@ -27,8 +27,8 @@
 
     <main>
     <?php
-        $controller=new ControlleurVeterinaire;
-        $controller->afficherListe();
+        $controller=new ControlleurAnimal;
+        $controller->afficherTableau();
     ?>
     </main>
 

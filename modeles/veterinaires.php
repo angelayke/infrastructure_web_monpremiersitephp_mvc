@@ -7,12 +7,14 @@ class modele_veterinaire {
     public $id_specialite; 
     public $nom_veto;
     public $prenom_veto;
+    public $nom_specialite;
 
-    public function __construct($id, $id_specialite, $nom_veto, $prenom_veto) {
-        $this->id = $id;
-        $this->id_specialite = $id_specialite;
+    public function __construct($nom_veto, $prenom_veto, $nom_specialite) {
+       // $this->id = $id;
+       // $this->id_specialite = $id_specialite;
         $this->nom_veto = $nom_veto;
         $this->prenom_veto = $prenom_veto;
+        $this->nom_specialite = $nom_specialite;
     }
 
     static function connecter() {
@@ -32,10 +34,11 @@ class modele_veterinaire {
         $liste = [];
         $mysqli = self::connecter();
 
-        $resultatRequete = $mysqli->query("SELECT id, id_specialite, nom_veto, prenom_veto FROM veterinaires ORDER BY id");
+        $resultatRequete = $mysqli->query("SELECT nom_veto, prenom_veto, nom_specialite FROM veterinaires 
+        INNER JOIN specialites ON specialites.id = veterinaires.id_specialite ORDER BY nom_veto");
 
         foreach ($resultatRequete as $enregistrement) {
-            $liste[] = new modele_veterinaire($enregistrement['id'], $enregistrement['id_specialite'], $enregistrement['nom_veto'], $enregistrement['prenom_veto']);
+            $liste[] = new modele_veterinaire($enregistrement['nom_veto'], $enregistrement['prenom_veto'], $enregistrement['nom_specialite']);
         }
 
         return $liste;
