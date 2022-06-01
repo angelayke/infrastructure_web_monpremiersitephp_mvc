@@ -1,6 +1,6 @@
 
 <?php
-    require_once 'controlleurs/produits.php';
+    require_once 'controlleurs/veterinaires.php';
 ?>
 
 <!doctype html>
@@ -17,24 +17,20 @@
     <header>
         <h1>Clinique Vétérinaire</h1>
 
-    <?php
-     //   $controller=new ControlleurProduit;
-      //  $controller->afficherListe();
-
-      //  $controller->afficherTableau();
-
-      //  $controller->afficherListe();
-
-      //  $controller->afficherTableau();
-    ?>
-
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="veterinaires.php">Vétérinaires</a></li>
-            <li><a href="animaux.php">Animaux</a></li>
-            <li><a href="rendezvous.php">Rendez-vous</a></li>
+            <li><a href="#">Animaux</a></li>
+            <li><a href="#">Rendez-vous</a></li>
         </ul>
     </header>
+
+    <main>
+    <?php
+        $controller=new ControlleurVeterinaire;
+        $controller->afficherListe();
+    ?>
+    </main>
 
 </body>
 
